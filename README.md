@@ -1,4 +1,4 @@
-# Netzgrafik-Editor Deployment
+# Netzgrafik-Editor Local Deployment with Docker Compose
 
 This repository provides a Docker Compose file for local deployment of Netzgrafik Editor (frontend, backend, DB for backend):
 It is based on the published images from the ghcr (GitHub container registry) at
