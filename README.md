@@ -1,14 +1,17 @@
 # Netzgrafik-Editor Local Deployment with Docker Compose
 
-This repository provides a Docker Compose file for local deployment of Netzgrafik Editor (frontend, backend, DB for backend):
-It is based on the published images from the ghcr (GitHub container registry) at
-[SchweizerischeBundesbahnen](https://github.com/orgs/SchweizerischeBundesbahnen/packages).
-No local dev setup (`mvn`, `npm` etc.) beyond `docker` and `docker-compose` are required.
-
-For local dev setup, please refer to
+This repository provides a [Docker Compose](https://docs.docker.com/compose/) file for local deployment of Netzgrafik Editor including
 
 * [netzgrafik-editor-frontend](https://github.com/SchweizerischeBundesbahnen/netzgrafik-editor-frontend)
 * [netzgrafik-editor-backend](https://github.com/SchweizerischeBundesbahnen/netzgrafik-editor-backend)
+* [Keycloak](https://github.com/keycloak/keycloak) for Identity and Access Management
+* [PostgreSQL](https://www.postgresql.org/) database for backend data
+
+The setup is based on the published images from the GitHub container registry at
+[ghcr.io/schweizerischebundesbahnen](https://github.com/orgs/SchweizerischeBundesbahnen/packages).
+It requires only `docker` and `docker compose`.
+No further local dev tools (like `mvn`, `npm` etc.)  are required.
+For local dev setup, please refer to the frontend and backend repos.
 
 ## Local Deployment with Docker Compose
 
