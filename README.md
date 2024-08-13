@@ -15,19 +15,19 @@ For local dev setup, please refer to
 Start containers:
 
 ```shell
-docker-compose up -d
+docker compose up -d
 ```
 
 Stop containers:
 
 ```shell
-docker-compose stop 
+docker compose stop 
 ```
 
 Remove containers and data:
 
 ```shell
-docker-compose down 
+docker compose down 
 ```
 
 ## Overview
