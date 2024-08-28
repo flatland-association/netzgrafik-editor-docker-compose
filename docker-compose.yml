@@ -8,14 +8,6 @@ services:
     ports:
       - "5432:5432"
 
-  # TODO get rid of this workaround by performing migration application upon backend start automatically (see https://github.com/SchweizerischeBundesbahnen/netzgrafik-editor-backend/pull/9)
-  init-uptime-flyway:
-    image: flyway/flyway
-    command: -url="jdbc:postgresql://postgres/netzgrafikeditor" -user=netzgrafikeditor -password=netzgrafikeditor -connectRetries=60 migrate
-    volumes:
-      - ./flyway/:/flyway/sql
-    depends_on:
-      - postgres
 
   keycloak:
     image: quay.io/keycloak/keycloak:23.0
@@ -51,8 +43,6 @@ services:
     ports:
       - 8080:8080
     depends_on:
-      init-uptime-flyway:
-        condition: service_completed_successfully
       keycloak-healthcheck:
         condition: service_completed_successfully
     volumes:
