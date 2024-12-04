@@ -21,6 +21,7 @@ Start containers:
 docker compose up -d
 ```
 and then go to http://localhost:4200/
+and enter user `user` and password `user`.
 
 Stop containers:
 
