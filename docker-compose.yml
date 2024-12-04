@@ -49,15 +49,18 @@ services:
       - ./backend/application.yml:/workspace/BOOT-INF/classes/application.yml
       - ./backend/nginx/nginx.conf:/etc/nginx/nginx.conf:ro
       - ./backend/nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
-
+    healthcheck:
+      test: [ "CMD", "bash", "-c", "curl -v --fail http://127.0.0.1:8080/actuator/health" ]
+      interval: 5s
+      timeout: 10s
+      retries: 15
   frontend:
-    image: ghcr.io/schweizerischebundesbahnen/netzgrafik-editor-frontend:2.7.10
+    image: ghcr.io/schweizerischebundesbahnen/netzgrafik-editor-frontend:2.9.11
     # set platform as necessary:
     platform: linux/x86_64
     ports:
       - 4200:4200
     depends_on:
       backend:
-        # TODO backend health check instead
-        condition: service_started
+        condition: service_healthy
 

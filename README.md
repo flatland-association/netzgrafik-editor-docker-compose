@@ -20,6 +20,7 @@ Start containers:
 ```shell
 docker compose up -d
 ```
+and then go to http://localhost:4200/
 
 Stop containers:
 
