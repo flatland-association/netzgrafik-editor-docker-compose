@@ -39,7 +39,7 @@ docker compose down
 
 The following diagram shows the network wiring:
 
-![Overview](./images/docker_compose.png)
+![Overview](./images/docker_compose.drawio.png)
 
 Keycloak tokens are issued for `http://localhost:8081/realms/netzgrafikeditor`.
 As the backend verifies these tokens, a reverse proxy needs to be run in the backend Docker container.
