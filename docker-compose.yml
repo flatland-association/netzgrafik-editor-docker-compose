@@ -43,7 +43,7 @@ services:
   backend:
     container_name: nge-backend
     build: backend
-    entrypoint: /bin/bash
+    entrypoint: /usr/bin/bash
     command: >
       -c "nginx && /cnb/process/web"
     ports:
