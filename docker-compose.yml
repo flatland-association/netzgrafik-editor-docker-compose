@@ -3,6 +3,7 @@ name: nge
 services:
   postgres:
     container_name: nge-postgres
+    platform: ${DOCKER_PLATFORM}
     image: postgres:15
     environment:
       - POSTGRES_USER=netzgrafikeditor
@@ -14,6 +15,7 @@ services:
 
   keycloak:
     container_name: nge-keycloak
+    platform: ${DOCKER_PLATFORM}
     image: quay.io/keycloak/keycloak:${KEYCLOAK_VERSION}
     # as we need to access keycloak from backend Docker container under docker internal port, we need to start Keycloak on 8081, port forwarding in Docker run is not enough
     command: start-dev --import-realm --http-port 8081 --hostname localhost
@@ -28,6 +30,7 @@ services:
 
   keycloak-healthcheck:
     container_name: nge-keycloak-healthcheck
+    platform: ${DOCKER_PLATFORM}
     image: busybox
     depends_on:
       keycloak:
@@ -42,6 +45,7 @@ services:
 
   backend:
     container_name: nge-backend
+    platform: ${DOCKER_PLATFORM}
     build:
       context: backend
       args:
@@ -66,9 +70,8 @@ services:
 
   frontend:
     container_name: nge-frontend
+    platform: ${DOCKER_PLATFORM}
     image: ghcr.io/openrailassociation/netzgrafik-editor-frontend:${NGE_FRONTEND_VERSION}
-    # set platform as necessary:
-    platform: linux/x86_64
     ports:
       - 4200:4200
     depends_on:
