@@ -14,7 +14,7 @@ services:
 
   keycloak:
     container_name: nge-keycloak
-    image: quay.io/keycloak/keycloak:26.8.1
+    image: quay.io/keycloak/keycloak:${KEYCLOAK_VERSION}
     # as we need to access keycloak from backend Docker container under docker internal port, we need to start Keycloak on 8081, port forwarding in Docker run is not enough
     command: start-dev --import-realm --http-port 8081 --hostname localhost
     ports:
@@ -42,7 +42,10 @@ services:
 
   backend:
     container_name: nge-backend
-    build: backend
+    build:
+      context: backend
+      args:
+        - NGE_BACKEND_VERSION=${NGE_BACKEND_VERSION}
     entrypoint: /usr/bin/bash
     command: >
       -c "nginx && /cnb/process/web"
@@ -63,7 +66,7 @@ services:
 
   frontend:
     container_name: nge-frontend
-    image: ghcr.io/openrailassociation/netzgrafik-editor-frontend:2.12.2
+    image: ghcr.io/openrailassociation/netzgrafik-editor-frontend:${NGE_FRONTEND_VERSION}
     # set platform as necessary:
     platform: linux/x86_64
     ports:

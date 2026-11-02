@@ -1,4 +1,6 @@
-FROM ghcr.io/openrailassociation/netzgrafik-editor-backend:2.9.1 AS nge-backend
+ARG NGE_BACKEND_VERSION
+
+FROM ghcr.io/openrailassociation/netzgrafik-editor-backend:${NGE_BACKEND_VERSION} AS nge-backend
 
 # The published image is based on paketobuildpacks/ubuntu-noble-run-tiny (distroless-like, no shell, no package manager),
 # so install the tools in a matching Ubuntu and stage them together with the shared libraries missing in the published image.
