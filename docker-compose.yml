@@ -63,7 +63,7 @@ services:
 
   frontend:
     container_name: nge-frontend
-    image: ghcr.io/schweizerischebundesbahnen/netzgrafik-editor-frontend:2.9.11
+    image: ghcr.io/openrailassociation/netzgrafik-editor-frontend:2.12.2
     # set platform as necessary:
     platform: linux/x86_64
     ports:
